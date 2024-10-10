@@ -1,4 +1,3 @@
-// Definição das classes de Carta e Jogador
 class Carta {
     constructor(nome, calvice, potencia, vida, inteligencia) {
         this.nome = nome;
@@ -7,7 +6,7 @@ class Carta {
         this.vida = vida;
         this.inteligencia = inteligencia;
     }
-    
+
     toString() {
         return `${this.nome} | Calvice: ${this.calvice}, Potência: ${this.potencia}, Vida: ${this.vida}, Inteligência: ${this.inteligencia}`;
     }
@@ -18,21 +17,20 @@ class Jogador {
         this.nome = nome;
         this.cartas = [];
     }
-    
+
     adicionarCarta(carta) {
         this.cartas.push(carta);
     }
-    
+
     temCartas() {
         return this.cartas.length > 0;
     }
-    
+
     jogarCartaNaPosicao(posicao) {
         return this.cartas.splice(posicao, 1)[0]; // Remove a carta da posição
     }
 }
 
-// Criação das cartas
 const opcoesDeCartas = [
     new Carta("----Romero Paulera----", 400, 850, 500, 300),
     new Carta("----Anaconda 5 o filme----", 999, 760, 200, 800),
@@ -46,38 +44,32 @@ const opcoesDeCartas = [
     new Carta("----Japodi Al-Mussah----", 100, 700, 1000, 900),
 ];
 
-// Jogadores
 const jogador1 = new Jogador("Jogador 1");
 const jogador2 = new Jogador("Jogador 2");
 
-// Função para escolher cartas
 function escolherCartas(jogador) {
-    const cartasEscolhidas = [];
-    while (cartasEscolhidas.length < 6 && cartasEscolhidas.length < opcoesDeCartas.length) {
-        const escolha = Math.floor(Math.random() * opcoesDeCartas.length);
-        if (!cartasEscolhidas.includes(opcoesDeCartas[escolha])) {
-            cartasEscolhidas.push(opcoesDeCartas[escolha]);
-            jogador.adicionarCarta(opcoesDeCartas[escolha]);
-        }
+    while (jogador.cartas.length < 6 && opcoesDeCartas.length > 0) {
+        const indice = Math.floor(Math.random() * opcoesDeCartas.length);
+        jogador.adicionarCarta(opcoesDeCartas[indice]);
+        opcoesDeCartas.splice(indice, 1); // Remove a carta escolhida
     }
 }
 
-// Função para iniciar o jogo
 function iniciarJogo() {
+    const resultadoDiv = document.getElementById("resultado");
+    resultadoDiv.innerHTML = ''; // Limpa o resultado anterior
+
     escolherCartas(jogador1);
     escolherCartas(jogador2);
 
     const atributos = ["Calvice", "Potência", "Vida", "Inteligência"];
-    const cartasContainer = document.getElementById("cartas-disponiveis");
-    const resultadoDiv = document.getElementById("resultado");
-
     let turno = 0; // Controla o turno
+
     while (jogador1.temCartas() && jogador2.temCartas()) {
         const cartaJogador1 = jogador1.jogarCartaNaPosicao(0);
         const cartaJogador2 = jogador2.jogarCartaNaPosicao(0);
 
         const atributoEscolhido = Math.floor(Math.random() * atributos.length); // Escolha aleatória de atributo
-
         const valor1 = cartaJogador1[atributos[atributoEscolhido].toLowerCase()];
         const valor2 = cartaJogador2[atributos[atributoEscolhido].toLowerCase()];
 
@@ -107,4 +99,4 @@ function iniciarJogo() {
 }
 
 // Evento de clique para iniciar o jogo
-document.getElementById("escolher-carta").addEventListener("click", iniciarJogo);
+document.getElementById("iniciar-jogo").addEventListener("click", iniciarJogo);
