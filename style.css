@@ -1,57 +1,31 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    text-align: center;
     margin: 0;
-    padding: 0;
+    padding: 20px;
 }
 
 h1 {
-    color: #333;
-    margin: 20px;
-}
-
-#jogo {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px auto;
-    width: 80%;
-}
-
-.jogador {
-    background-color: #e9e9e9;
-    padding: 20px;
-    border-radius: 10px;
-    width: 40%;
-}
-
-.cartas {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.carta {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
-    width: 90%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 button {
-    margin-top: 10px;
+    display: block;
+    margin: 20px auto;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #5cb85c;
-    color: white;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #4cae4c;
+#cartas-disponiveis {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#resultado {
+    margin-top: 20px;
+    font-weight: bold;
 }
