@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Super Trunfo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Jogo Super Trunfo</h1>
+    
+    <div id="jogo">
+        <div id="jogador1" class="jogador">
+            <h2>Jogador 1</h2>
+            <div class="cartas">
+                <!-- Cartas do Jogador 1 aparecerão aqui -->
+            </div>
+            <button id="escolherCartaJogador1">Escolher Carta</button>
+        </div>
+
+        <div id="jogador2" class="jogador">
+            <h2>Jogador 2</h2>
+            <div class="cartas">
+                <!-- Cartas do Jogador 2 aparecerão aqui -->
+            </div>
+            <button id="escolherCartaJogador2">Escolher Carta</button>
+        </div>
+    </div>
+
+    <div id="resultado">
+        <!-- O resultado da rodada será exibido aqui -->
+    </div>
+
+    <script>
+        // Simulando as cartas do jogo (dados estáticos para simulação)
+        const cartasJogador1 = [
+            { nome: "Romero Paulera", calvice: 400, potencia: 850, vida: 500, inteligencia: 300 },
+            { nome: "Anaconda 5 o filme", calvice: 999, potencia: 760, vida: 200, inteligencia: 800 },
+            { nome: "Shaolin Matador de Porco", calvice: 600, potencia: 500, vida: 999, inteligencia: 100 }
+        ];
+
+        const cartasJogador2 = [
+            { nome: "Datena Cadeirinha", calvice: 100, potencia: 950, vida: 600, inteligencia: 250 },
+            { nome: "Hugo que trancou o curso", calvice: 400, potencia: 800, vida: 500, inteligencia: 0 },
+            { nome: "Neima '0 POC-POC'", calvice: 1000, potencia: 700, vida: 69, inteligencia: 900 }
+        ];
+
+        // Função para exibir cartas
+        function exibirCartas(jogador, cartas) {
+            const cartasDiv = document.querySelector(`#${jogador} .cartas`);
+            cartasDiv.innerHTML = ''; // Limpa antes de adicionar novas cartas
+            cartas.forEach((carta, index) => {
+                cartasDiv.innerHTML += `
+                    <div class="carta">
+                        <h3>${carta.nome}</h3>
+                        <p>Calvice: ${carta.calvice}</p>
+                        <p>Potência: ${carta.potencia}</p>
+                        <p>Vida: ${carta.vida}</p>
+                        <p>Inteligência: ${carta.inteligencia}</p>
+                    </div>
+                `;
+            });
+        }
+
+        // Exibindo as cartas de ambos os jogadores ao carregar a página
+        exibirCartas("jogador1", cartasJogador1);
+        exibirCartas("jogador2", cartasJogador2);
+
+        // Event listeners para os botões (simulação de escolha de cartas)
+        document.getElementById('escolherCartaJogador1').addEventListener('click', () => {
+            alert('Jogador 1 escolheu uma carta!');
+        });
+
+        document.getElementById('escolherCartaJogador2').addEventListener('click', () => {
+  
