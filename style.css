@@ -1,31 +1,71 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #eaeaea;
     margin: 0;
     padding: 20px;
 }
 
-h1 {
+.container {
+    max-width: 800px;
+    margin: 0 auto;
     text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
 }
 
 button {
-    display: block;
+    display: inline-block;
     margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-#cartas-disponiveis {
+button:hover {
+    background-color: #0056b3;
+}
+
+.cartas-container {
     margin-top: 20px;
-    padding: 10px;
-    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.carta {
+    background-color: #f8f9fa;
     border: 1px solid #ccc;
     border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 150px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-#resultado {
+.carta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.resultado {
     margin-top: 20px;
     font-weight: bold;
+    font-size: 18px;
+    color: #333;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
